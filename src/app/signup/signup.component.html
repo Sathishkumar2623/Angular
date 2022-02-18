@@ -1,0 +1,167 @@
+<section class="vh-250 gradient-custom">
+    <div class="container py-5 h-100">
+         
+            <div class="col-12 col-lg-9 col-xl-7">
+                
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Sign Up</h3>
+                        <form #f="ngForm" (ngSubmit)="f.form.valid && onFormSubmit()">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="firstName" required>First Name</label>
+                                        <span class="redStar">*</span>
+                                        <input type="text" pattern="[a-zA-Z ]*" name="firstName" id="firstName"
+                                            [(ngModel)]="user.firstName" class="form-control ng-invalid form-control-lg"
+                                            required />
+                                        <div [hidden]="user.firstName !=''">
+                                            <p class="text-danger">First Name is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="lastName">Last
+                                            Name</label>
+                                        <span class="redStar">*</span>
+                                        <input type="text" pattern="[a-zA-Z ]*" id="lastName" name="lastName"
+                                            [(ngModel)]="user.lastName" class="form-control form-control-lg" required />
+                                        <div [hidden]="user.lastName !=''" >
+                                            <p class="text-danger">Last Name is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="email">Email</label>
+                                        <span class="redStar">*</span>
+                                        <input type="text"  pattern="[a-zA-Z ]*" id="email" name="email"
+                                        [(ngModel)]="user.email" class="form-control form-control-lg" required />
+                                        <div [hidden]="user.email !=''" >
+                                            <p class="text-danger">Email is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="Role">Role</label>
+                                        <span class="redStar">*</span>
+                                        <input type="text"  pattern="[a-zA-Z ]*" id="role" name="role"
+                                        [(ngModel)]="user.role" class="form-control form-control-lg" required />
+                                        <div [hidden]="user.role !=''" >
+                                            <p class="text-danger">Role is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">    
+                               
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="userName">User Name</label>
+                                        <span class="redStar">*</span>
+                                        <input type="text"  pattern="[a-zA-Z ]*" id="userName" name="userName"
+                                        [(ngModel)]="user.userName" class="form-control form-control-lg" required />
+                                        <div [hidden]="user.userName !=''" >
+                                            <p class="text-danger">User Name is required</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="userId">User ID</label>
+                                        <span class="redStar">*</span>
+                                        <input name="userId" [(ngModel)]="user.userId" type="text" id="userId"
+                                            class="form-control form-control-lg" required />
+                                        <div [hidden]="user.userId !=''" >
+                                            <p class="text-danger">User ID is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">    
+                        
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="phoneNumber">Contact Number</label>
+                                        <span class="redStar">*</span>
+                                        <input name="contactNumber" pattern="[0-9]*" [(ngModel)]="user.contactNumber"
+                                            type="tel" id="phoneNumber" class="form-control form-control-lg" required />
+                                        <div [hidden]="user.contactNumber !=''" >
+                                            <p class="text-danger">Contact Number is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="alternateNumber">Alternate Number</label>
+                                        <span class="redStar">*</span>
+                                        <input name="alternateNumber" pattern="[0-9]*" [(ngModel)]="user.alternateNumber"
+                                            type="tel" id="alternateNumber" class="form-control form-control-lg" required />
+                                        <div [hidden]="user.alternateNumber !=''" >
+                                            <p class="text-danger">Alternate Number is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="password">Password</label>
+                                        <span class="redStar">*</span>
+                                        <input name="password" [(ngModel)]="user.password" type="password" id="password"
+                                            class="form-control form-control-lg" required />
+                                        <div [hidden]="user.password !=''" >
+                                            <p class="text-danger">Password is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="confirmPassword">Confirm Password</label>
+                                        <span class="redStar">*</span>
+                                        <input type="password" name="confirmPassword" id="confirmPassword"
+                                            class="form-control form-control-lg" [(ngModel)]="confirmPassword"
+                                            required />
+                                        <div [hidden]="confirmPassword !=''" >
+                                            <p class="text-danger">Confirm Password is required</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="mt-4 pt-2">
+                                <input (click)="onFormSubmit()" class="btn btn-primary btn-lg" type="submit" value="Submit"
+                                    [disabled]="user.password != confirmPassword" />
+                            </div>
+                        </form>
+                    </div>
+                
+            </div>
+        
+    </div>

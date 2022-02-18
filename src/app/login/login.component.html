@@ -1,0 +1,198 @@
+<section class="vh-250 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="d-flex justify-content-center">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Log In</h3>
+                        </div>
+                        <form #f="ngForm" (ngSubmit)="f.form.valid && onFormSubmit()">
+
+                            <div class="row">
+                                <div class="d-flex justify-content-center">
+                                    <div class="col-md-6 mb-4">
+
+                                        <div class="form-outline">
+                                            <label class="form-label" for="firstName" required>User ID</label>
+                                            <span class="redStar">*</span>
+                                            <input type="text" name="userId" id="userId" [(ngModel)]="user.userId"
+                                                class="form-control ng-invalid form-control-lg" required />
+                                            <div [hidden]="user.userId !=''" >
+                                                <p class="text-danger">User ID is required</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="col-md-6 mb-4">
+
+                                        <div class="form-outline">
+                                            <label class="form-label" for="password" required>Password</label>
+                                            <span class="redStar">*</span>
+                                            <input type="password" name="password" id="password"
+                                                [(ngModel)]="user.password"
+                                                class="form-control ng-invalid form-control-lg" required />
+                                            <i class="glyphicon glyphicon-eye-open form-control-feedback"></i>
+                                            <div [hidden]="user.password !=''" >
+                                                <p class="text-danger">Password is required</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <div class="mt-4 pt-2">
+                                    <input class="btn btn-outline-primary btn-lg" type="submit" value="Login" />
+                                </div>
+                            </div>
+                        </form>
+                        
+
+                        <ng-template #content let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">
+                                    Forgot User ID
+                                </h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">
+                                        ×
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form #forgotUser="ngForm">
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">What is your pet name?</label>
+                                                <input name="ans1" [(ngModel)]="forgotUserID.ans1" type="text"
+                                                    class="form-control">
+                                            </div>
+                                            <br />
+                                            <div class="col-lg-12">
+                                                <label class="form-label">What is your favourite colour?</label>
+                                                <input name="ans2" [(ngModel)]="forgotUserID.ans2" type="text"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label class="form-label">What is your favourite day?</label>
+                                                <input name="ans3" [(ngModel)]="forgotUserID.ans3" type="text"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-dark"
+                                    (click)="modal.close('Save click');onForgotUserIdSubmit()">
+                                    Submit
+                                </button>
+                            </div>
+                        </ng-template>
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+                                    Forgot User ID
+                                </button>
+                            </div>
+                            <div class="col-lg-4">
+                                <button class="btn btn-lg btn-outline-primary" (click)="open(contentPassword);">
+                                    Forgot Password
+                                </button>
+                            </div>
+                        </div>
+
+                        <ng-template #contentPassword let-modal>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modal-basic-title">
+                                    Forgot Password
+                                </h4>
+                                <button type="button" class="close" aria-label="Close"
+                                    (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">
+                                        ×
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form #forgotPassword="ngForm">
+                                    <div class="container">
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <label class="form-label">User ID :</label>
+                                                <input name="userId" [(ngModel)]="forgotUserID.userId" type="text"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label class="form-label">What is your pet name?</label>
+                                                <input name="ans1" [(ngModel)]="forgotUserID.ans1" type="text"
+                                                    class="form-control">
+                                            </div>
+                                            <br />
+                                            <div class="col-lg-12">
+                                                <label class="form-label">What is your favourite colour?</label>
+                                                <input name="ans2" [(ngModel)]="forgotUserID.ans2" type="text"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label class="form-label">What is your favourite day?</label>
+                                                <input name="ans3" [(ngModel)]="forgotUserID.ans3" type="text"
+                                                    class="form-control">
+                                            </div>
+                                            <div *ngIf="passwordResetValid">
+                                                <div class="col-lg-12">
+                                                    <label class="form-label">Password</label>
+                                                    <input name="password" [(ngModel)]="resetPassword.password"
+                                                        type="password" minlength="3" maxlength="10"
+                                                        class="form-control">
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="form-label">Confirm Password
+                                                    </label>
+                                                    <input name="confirmPassword" minlength="3" maxlength="10"
+                                                        [(ngModel)]="resetPassword.confirmPassword" type="password"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <div *ngIf="!passwordResetValid">
+                                    <button type="button" class="btn btn-outline-dark"
+                                        [disabled]="resetPassword.password != resetPassword.confirmPassword"
+                                        (click)=" onForgotPasswordSubmit();">
+                                        Submit
+                                    </button>
+                                </div>
+                                <div *ngIf="passwordResetValid">
+                                    <button type="button" class="btn btn-outline-dark"
+                                        [disabled]="resetPassword.password != resetPassword.confirmPassword"
+                                        (click)="modal.close('Save click'); onForgotPasswordSubmit();">
+                                        Submit
+                                    </button>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

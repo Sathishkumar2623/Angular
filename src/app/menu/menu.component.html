@@ -1,0 +1,25 @@
+<div class="container-fluid" style="background-color:#00060c;">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a href="#" class="navbar-brand" id="navLi">CITY CLASSIFIED AND SEARCH</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" (click)="isShown = !isShown"
+            data-bs-target="#navbarNav" aria-expanded="false" aria-controls="navbarNav"><span
+                class="navbar-toggler-icon"></span></button>
+
+        <div class="navbar-collapse collapse flex-row-reverse" [ngClass]="{ 'show': isShown }" id="navbarNav">
+            <ul class="navbar-nav ">
+                <li style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Feedback</a>
+                </li>
+                <li style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Help</a>
+                </li>
+                <li style="color:rgb(250, 245, 245);" class="nav-item">
+                    <a routerLink="signUp" (click)="isShown = false" class="nav-link">SignUp</a>
+                </li>
+                <li style="color:rgb(245, 240, 240);" class="nav-item">
+                    <a routerLink="login" (click)="isShown = false" class="nav-link">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
