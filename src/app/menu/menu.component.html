@@ -7,19 +7,100 @@
 
         <div class="navbar-collapse collapse flex-row-reverse" [ngClass]="{ 'show': isShown }" id="navbarNav">
             <ul class="navbar-nav ">
-                <li style="color:white;" class="nav-item">
+                <li *ngIf="isLoggedIn" style="color:white;" class="nav-item">
                     <a (click)="isShown = false" class="nav-link">Feedback</a>
                 </li>
-                <li style="color:white;" class="nav-item">
-                    <a (click)="isShown = false" class="nav-link">Help</a>
+                <li *ngIf="isLoggedIn" style="color:white;" class="nav-item">
+                    <a routerLink="help" (click)="isShown = false" class="nav-link">Help</a>
                 </li>
-                <li style="color:rgb(250, 245, 245);" class="nav-item">
+                <li *ngIf="!isLoggedIn" style="color:rgb(250, 245, 245);" class="nav-item">
                     <a routerLink="signUp" (click)="isShown = false" class="nav-link">SignUp</a>
                 </li>
-                <li style="color:rgb(245, 240, 240);" class="nav-item">
+                <li *ngIf="!isLoggedIn" style="color:rgb(245, 240, 240);" class="nav-item">
                     <a routerLink="login" (click)="isShown = false" class="nav-link">Login</a>
                 </li>
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link"><h6>View Information</h6></a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link"><h6>View Classifieds</h6></a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link"><h6>Post information</h6></a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link"><h6>Post Classified</h6></a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Maintain Information</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link"><h6>Maintain Classified</h6></a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link"><h6>Resolve Help Request</h6></a>
+                </li>
+                
+                <li *ngIf="isLoggedIn && role=='admin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link"><h6>Report</h6></a>
+                </li>
+
+
+                <li *ngIf="isLoggedIn && role=='poster'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">View Information</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='poster'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">View Classified</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='poster'" style="color:white;" class="nav-item">
+                    <a routerLink="employee" (click)="isShown = false" class="nav-link">Post Classified</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='poster'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Maintain Classified</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='poster'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Report</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='poster'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Feedback</a>
+                </li>
+
+
+                <li *ngIf="isLoggedIn && role=='viewers'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">View Classified</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='viewers'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">View Classified</a>
+                </li>
+                <li *ngIf="isLoggedIn && role=='viewers'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Report</a>
+                </li>
+
+                <li *ngIf="isLoggedIn && role=='viewers'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Feedback</a>
+                </li>
+
+                <li *ngIf="isLoggedIn && role=='superuser'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">Approve Admin Request </a>
+                </li>
+
+                <li *ngIf="isLoggedIn && role=='GuestLogin'" style="color:white;" class="nav-item">
+                    <a (click)="isShown = false" class="nav-link">View Information</a>
+                </li>
+
+
+                <li *ngIf="!isLoggedIn" style="color:white;" class="nav-item">
+                    <a routerLink="guestlogin" (click)="isShown = false" class="nav-link">GuestLogin</a>
+                </li>
+
+                
+                    <li  *ngIf="isLoggedIn" style="color:white;" class="nav-item">
+                        <a (click)="isShown = false; onLogOut()" class="nav-link">Logout</a>
+                    </li>
+                    
+                
             </ul>
         </div>
-    </nav>
-</div>
+        </nav>
+        </div>
+        

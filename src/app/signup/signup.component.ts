@@ -29,12 +29,14 @@ export class SignUpComponent implements OnInit {
 
   onFormSubmit() {
     console.log(this.user)
-    this.services.postUser(this.user).subscribe((data: { status: number; }) => {
+    this.services.postUser(this.user).subscribe((data => {
       data = data;
+      console.log(data)
       if (data.status === 201) {
         alert("New user created successfully")
-      }
-    });
-  }
 
+      }
+      window.location.href = "/login"
+    }));
+  }
 }

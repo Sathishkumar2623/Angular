@@ -1,12 +1,16 @@
-<section class="vh-250 gradient-custom">
-    <div class="container py-5 h-100">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col-12 col-lg-9 col-xl-7">
-                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-                    <div class="card-body p-4 p-md-5">
-                        <div class="d-flex justify-content-center">
-                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Log In</h3>
+<section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-11 col-md-8 col-lg-5 col-xl-10">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Login</h2>
+                      
+      
+                   
                         </div>
+                        
                         <form #f="ngForm" (ngSubmit)="f.form.valid && onFormSubmit()">
 
                             <div class="row">
@@ -14,13 +18,11 @@
                                     <div class="col-md-6 mb-4">
 
                                         <div class="form-outline">
-                                            <label class="form-label" for="firstName" required>User ID</label>
+                                            <label class="form-label" for="userId" required>User ID</label>
                                             <span class="redStar">*</span>
-                                            <input type="text" name="userId" id="userId" [(ngModel)]="user.userId"
+                                            <input type="text" name="userId" id="userId" #userId="ngModel" [(ngModel)]="user.userId"
                                                 class="form-control ng-invalid form-control-lg" required />
-                                            <div [hidden]="user.userId !=''" >
-                                                <p class="text-danger">User ID is required</p>
-                                            </div>
+                                                <small class="text-danger" *ngIf="userId.touched && !userId.valid">user Id is required</small>
                                         </div>
 
 
@@ -32,23 +34,25 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="password" required>Password</label>
                                             <span class="redStar">*</span>
-                                            <input type="password" name="password" id="password"
+                                            <input type="password" name="password" id="password" #password="ngModel"
                                                 [(ngModel)]="user.password"
                                                 class="form-control ng-invalid form-control-lg" required />
                                             <i class="glyphicon glyphicon-eye-open form-control-feedback"></i>
-                                            <div [hidden]="user.password !=''" >
-                                                <p class="text-danger">Password is required</p>
-                                            </div>
+                                            <small class="text-danger" *ngIf="password.touched && !password.valid">Last Name is required</small>
                                         </div>
 
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="checkbox" unchecked />
+                                            <label class="form-check-label" for="form1Example3"> Remember me </label>
+                                          </div>
 
                                     </div>
                                 </div>
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <div class="mt-4 pt-2">
-                                    <input class="btn btn-outline-primary btn-lg" type="submit" value="Login" />
+                                <div class="modal-header">
+                                    <input class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" type="submit" value="Login" />
                                 </div>
                             </div>
                         </form>
@@ -72,19 +76,24 @@
 
                                         <div class="row">
                                             <div class="col-lg-12">
+                                                <label class="form-label">Enter your Contact Number</label>
+                                                <input name="contactNumber" [(ngModel)]="forgotUserID.contactNumber" type="tel"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-lg-12">
                                                 <label class="form-label">What is your pet name?</label>
-                                                <input name="ans1" [(ngModel)]="forgotUserID.ans1" type="text"
+                                                <input name="ans4" [(ngModel)]="forgotUserID.ans4" type="text"
                                                     class="form-control">
                                             </div>
                                             <br />
                                             <div class="col-lg-12">
                                                 <label class="form-label">What is your favourite colour?</label>
-                                                <input name="ans2" [(ngModel)]="forgotUserID.ans2" type="text"
+                                                <input name="ans5" [(ngModel)]="forgotUserID.ans5" type="text"
                                                     class="form-control">
                                             </div>
                                             <div class="col-lg-12">
                                                 <label class="form-label">What is your favourite day?</label>
-                                                <input name="ans3" [(ngModel)]="forgotUserID.ans3" type="text"
+                                                <input name="ans6" [(ngModel)]="forgotUserID.ans6" type="text"
                                                     class="form-control">
                                             </div>
                                         </div>
@@ -100,13 +109,14 @@
                         </ng-template>
 
                         <div class="row">
-                            <div class="col-lg-8">
-                                <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+                            <div class="col-9">
+                            
+                                <button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="open(content)">
                                     Forgot User ID
                                 </button>
                             </div>
-                            <div class="col-lg-4">
-                                <button class="btn btn-lg btn-outline-primary" (click)="open(contentPassword);">
+                            <div class="col-3">
+                                <button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="open(contentPassword);">
                                     Forgot Password
                                 </button>
                             </div>
@@ -186,13 +196,11 @@
                                         Submit
                                     </button>
                                 </div>
-
+                                
                             </div>
+                            
                         </ng-template>
                     </div>
 
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
+            

@@ -4,6 +4,7 @@ import { user } from '../Types/User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Answer } from '../Types/Answer';
+import { UtilService } from '../util.service';
 
 
 @Component({
@@ -12,15 +13,21 @@ import { Answer } from '../Types/Answer';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  
   passwordResetValid = false;
   showModal: boolean = true;
   closeResult = '';
 
   forgotUserID: Answer = {
-    ans1: "",
-    ans2: "",
-    ans3: "",
-    userId: ""
+    contactNumber: "",
+    ans4: "",
+    ans5: "",
+    ans6: "",
+    userId: "",
+    ans1: '',
+    ans2: '',
+    ans3: ''
   }
 
   resetPassword = {
@@ -40,12 +47,14 @@ export class LoginComponent implements OnInit {
     userName: '',
 
   }
-  constructor(private services: Service, private modalService: NgbModal) {
+  constructor(private services: Service, private utilService: UtilService,private modalService: NgbModal) {
     //this.showModal = false;
+  
   }
 
   ngOnInit(): void {
     this.passwordResetValid = false;
+
   }
 
 
@@ -70,14 +79,17 @@ export class LoginComponent implements OnInit {
   }
 
   onFormSubmit() {
+    console.log("here")
     this.services.login(this.user).subscribe(data => {
-      if (data.status == 200) {
-        alert("Logged In")
-      }
+      //console.log(data.role)
+      alert("Logged In")
+      document.cookie = "userId=" + this.user.userId;
+      document.cookie = "role=" + data.role;
+      window.location.href = "/signup"
     }, error => {
-      if (error.status == 400) {
+      if (error.error.role == "Password") {
         alert("Password is incorrect")
-      } else if (error.status == 404) {
+      } else if (error.error.role == "UserId") {
         alert("UserId not found")
       }
     })
@@ -104,8 +116,15 @@ export class LoginComponent implements OnInit {
     }
     else {
       //Submit to server
+      this.services.changePassword(this.forgotUserID.userId, this.resetPassword.password).subscribe(val => {
+        if (val.status == 201) {
+          alert("Changed successfully")
+        }
+      }, error => {
+        alert(error.status)
+      })
       console.log("Here")
-      alert("Changed successfully")
+    
     }
   }
 

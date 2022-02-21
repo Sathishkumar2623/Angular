@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Answer } from './Types/Answer';
+import { information } from './Types/information';
 import { user } from './Types/User';
 
 @Injectable({
@@ -23,6 +24,16 @@ export class Service {
     return this.http.post<user>(this.root_url + "postUser", body, { 'headers': headers, 'observe': 'response' });
   }
 
+  changePassword(userId: string, password: string) {
+    const headers = { 'content-type': 'application/json' }
+    var request = {
+      userId: userId,
+      password: password
+    }
+    const body = JSON.stringify(request);
+    return this.http.put<user>(this.root_url + "UserPassword", body, { 'headers': headers, 'observe': 'response' });
+  }
+
   login(user: user) {
     const headers = { 'content-type': 'application/json' }
     var request = {
@@ -30,14 +41,28 @@ export class Service {
       password: user.password
     }
     const body = JSON.stringify(request);
-    return this.http.post<any>(this.root_url + "login", body, { 'headers': headers, 'observe': 'response' });
+    return this.http.post<user>(this.root_url + "login", body, { 'headers': headers });
+  }
+  getInformation() {
+    return this.http.get<information>(this.root_url + "getInformation");
+  }
+
+  guestlogin(information: information) {
+    const headers = { 'content-type': 'application/json' }
+    var request = {
+      cityId: information.cityId,
+      cityName: information.cityName
+    }
+    const body = JSON.stringify(request);
+    return this.http.put<any>(this.root_url + "getInformation", body, { 'headers': headers, 'observe': 'response' });
   }
   getUserIdForgotUserID(answers: Answer) {
     const headers = { 'content-type': 'application/json' }
     var request = {
-      ans1: answers.ans1,
-      ans2: answers.ans2,
-      ans3: answers.ans3
+      contactNumber: answers.contactNumber,
+      ans4: answers.ans4,
+      ans5: answers.ans5,
+      ans6cd : answers.ans6
     }
     const body = JSON.stringify(request)
     return this.http.put<Answer>(this.root_url + "Password", body, { 'headers': headers });
